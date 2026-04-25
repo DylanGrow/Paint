@@ -1,2 +1,65 @@
-// weather.js - wttr.in integration (no API key)
-(function(){const widget=document.getElementById('weatherWidget'),loading=document.querySelector('.weather-loading'),error=document.querySelector('.weather-error'),content=document.querySelector('.weather-content'),locationEl=document.getElementById('weatherLocation'),tempEl=document.getElementById('weatherTemp'),conditionEl=document.getElementById('weatherCondition'),forecastEl=document.getElementById('weatherForecast');const CACHE_KEY='weather_cache',CACHE_EXPIRY=2*60*60*1000;function fetchWeather(lat,lon){const loc=lat&&lon?`${lat},${lon}`:'North%20Carolina';fetch(`https://wttr.in/${loc}?format=j1&lang=en`,{cache:'no-store',timeout:5000}).then(r=>r.json()).then(data=>renderWeather(data,loc)).catch(()=>showError())}function renderWeather(data,loc){const c=data.current_condition[0],f=data.weather;locationEl.textContent=loc.includes(',')?'North Carolina':loc;tempEl.textContent=`${Math.round(c.temp_F)}°F`;conditionEl.textContent=c.weatherDesc[0].value;forecastEl.innerHTML=f.slice(0,3).map(d=>{const date=new Date(d.date),day=date.toLocaleDateString('en',{weekday:'short'});return`<div class="forecast-day"><div class="day">${day}</div><div class="icon">${getWeatherIcon(d.hourly[12].weatherCode)}</div><div class="temp">${Math.round(d.maxtempF)}°/${Math.round(d.mintempF)}°</div><div class="chance">💧${d.hourly[12].chanceofrain}%</div></div>`}).join('');loading.classList.add('hidden');error.classList.add('hidden');content.classList.remove('hidden');try{localStorage.setItem(CACHE_KEY,JSON.stringify({data,loc,ts:Date.now()}))}catch(e){}}function getWeatherIcon(code){const icons={'113':'☀️','116':'⛅','119':'☁️','122':'☁️','143':'🌫️','176':'🌦️','179':'🌧️','182':'🌧️','185':'🌨️','200':'⛈️','227':'🌨️','230':'❄️','248':'🌫️','260':'🌫️','263':'🌦️','266':'🌦️','281':'🌧️','284':'🌧️','293':'🌦️','296':'🌧️','299':'🌧️','302':'🌧️','305':'🌧️','308':'🌧️','311':'🌨️','314':'🌨️','317':'🌨️','320':'❄️','323':'🌨️','326':'❄️','329':'❄️','332':'❄️','335':'❄️','338':'❄️','350':'🌨️','353':'🌦️','356':'🌧️','359':'🌧️','362':'🌨️','365':'🌨️','368':'❄️','371':'❄️','374':'🌨️','377':'🌨️','386':'⛈️','389':'⛈️','392':'⛈️','395':'❄️'};return icons[code]||'🌤️'}function showError(){loading.classList.add('hidden');content.classList.add('hidden');error.classList.remove('hidden')}function checkCache(){try{const cached=JSON.parse(localStorage.getItem(CACHE_KEY));if(cached&&Date.now()-cached.ts<CACHE_EXPIRY){renderWeather(cached.data,cached.loc);return true}}catch(e){}return false}function init(){if(!checkCache()){if(navigator.geolocation){navigator.geolocation.getCurrentPosition(p=>fetchWeather(p.coords.latitude,p.coords.longitude),()=>fetchWeather(),{timeout:5000,maximumAge:60000})}else fetchWeather()}}if(widget)init()})()
+document.addEventListener('DOMContentLoaded', () => {
+  const box = document.getElementById('weatherBox');
+  const loadEl = box.querySelector('.w-loading');
+  const errEl = box.querySelector('.w-error');
+  const dataEl = box.querySelector('.w-data');
+  const CACHE = 'wttr_cache_v2', CACHE_HOURS = 2;
+
+  function render() {
+    const cached = JSON.parse(localStorage.getItem(CACHE));
+    if (cached && (Date.now() - cached.ts < CACHE_HOURS * 3600000)) {
+      updateUI(cached);
+      return true;
+    }
+    return false;
+  }
+
+  async function fetchWeather() {
+    try {
+      const res = await fetch('https://wttr.in/?format=j1&lang=en', { cache: 'no-store' });
+      if (!res.ok) throw new Error('Fetch failed');
+      const data = await res.json();
+      const curr = data.current_condition[0];
+      const loc = data.nearest_area[0].areaName[0].value || data.nearest_area[0].region[0].value;
+      
+      const payload = {
+        loc: loc,
+        temp: curr.temp_F,
+        feel: curr.FeelsLikeF,
+        desc: curr.weatherDesc[0].value.replace(/\s\(.*?\)/g, ''),
+        forecast: data.weather.map(d => ({
+          day: new Date(d.date).toLocaleDateString('en-US', { weekday: 'short' }),
+          max: d.maxtempF,
+          min: d.mintempF,
+          icon: getIcon(d.hourly[4].weatherCode)
+        }))
+      };
+      localStorage.setItem(CACHE, JSON.stringify({ ts: Date.now(), ...payload }));
+      updateUI(payload);
+    } catch (e) {
+      loadEl.classList.add('hidden');
+      errEl.classList.remove('hidden');
+    }
+  }
+
+  function updateUI(p) {
+    loadEl.classList.add('hidden'); errEl.classList.add('hidden');
+    dataEl.classList.remove('hidden');
+    document.getElementById('wLoc').textContent = p.loc || 'North Carolina';
+    document.getElementById('wTemp').textContent = `${p.temp}°F`;
+    document.getElementById('wCond').textContent = p.desc;
+    document.getElementById('wFeel').textContent = `Feels like ${p.feel}°F`;
+    document.getElementById('wForecast').innerHTML = p.forecast.map(f => `
+      <div class="fc-day"><strong>${f.day}</strong><span style="font-size:1.5rem">${f.icon}</span><div>${Math.round(f.max)}°/${Math.round(f.min)}°</div></div>
+    `).join('');
+  }
+
+  function getIcon(code) {
+    const map = {'113':'☀️','116':'⛅','119':'☁️','143':'🌫️','176':'🌦️','296':'🌧️','353':'🌦️','386':'⛈️','308':'🌧️','323':'❄️'};
+    return map[code] || '🌤️';
+  }
+
+  if (box) {
+    if (!render()) fetchWeather();
+  }
+});
