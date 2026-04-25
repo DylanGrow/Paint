@@ -1,2 +1,88 @@
-// voice.js - Web Speech API + translation fallback
-(function(){const widget=document.getElementById('voiceWidget'),toggle=document.getElementById('voiceToggle'),btn=document.getElementById('voiceBtn'),status=document.getElementById('voiceStatus'),messages=document.getElementById('voiceMessages'),offline=document.getElementById('voiceOffline'),closeBtn=document.querySelector('.voice-close');let recognition,listening=false,lang=localStorage.getItem('lang')||'es';function initSpeech(){if(!('webkitSpeechRecognition'in window||'SpeechRecognition'in window)){status.textContent='Voice not supported';btn.disabled=true;return}const SR=window.SpeechRecognition||window.webkitSpeechRecognition;recognition=new SR();recognition.continuous=false;recognition.interimResults=false;recognition.lang=lang==='es'?'es-ES':'en-US';recognition.onstart=()=>{listening=true;btn.classList.add('listening');status.textContent=lang==='es'?'Escuchando...':'Listening...'};recognition.onend=()=>{listening=false;btn.classList.remove('listening');status.textContent=lang==='es'?'Listo':'Ready'};recognition.onresult=e=>{const txt=e.results[0][0].transcript;addMessage(txt,'user');translate(txt)}}function translate(text){status.textContent=lang==='es'?'Traduciendo...':'Translating...';const target=lang==='es'?'en':'es';fetch('https://libretranslate.com/translate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({q:text,source:lang==='es'?'es':'en',target:target,format:'text'}),timeout:5000}).then(r=>r.json()).then(d=>{if(d&&d.translatedText){addMessage(d.translatedText,'bot');cacheTranslation(text,d.translatedText)}else fallbackTranslate(text,target)}).catch(()=>fallbackTranslate(text,target))}function fallbackTranslate(text,target){fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${lang==='es'?'es|en':'en|es'}`).then(r=>r.json()).then(d=>{if(d&&d.responseData&&d.responseData.translatedText){addMessage(d.responseData.translatedText,'bot');cacheTranslation(text,d.responseData.translatedText)}else{addMessage(text+' [Translation unavailable]','bot')}}).catch(()=>addMessage(text+' [Translation unavailable]','bot'))}function cacheTranslation(original,translated){try{const key=`trans_${lang}_${original.slice(0,30)}`;localStorage.setItem(key,JSON.stringify({t:translated,e:Date.now()}))}catch(e){}}function addMessage(text,sender){const div=document.createElement('div');div.className=`voice-message ${sender}`;div.textContent=text;messages.appendChild(div);messages.scrollTop=messages.scrollHeight}function toggleWidget(){const hidden=widget.hidden;widget.hidden=!hidden;toggle.setAttribute('aria-expanded',!hidden);if(!hidden&&!recognition)initSpeech()}toggle.addEventListener('click',toggleWidget);closeBtn.addEventListener('click',toggleWidget);btn.addEventListener('mousedown',()=>{if(!recognition)initSpeech();if(recognition&&!listening)recognition.start()});btn.addEventListener('mouseup',()=>{if(recognition&&listening)recognition.stop()});btn.addEventListener('touchstart',e=>{e.preventDefault();if(!recognition)initSpeech();if(recognition&&!listening)recognition.start()});btn.addEventListener('touchend',e=>{e.preventDefault();if(recognition&&listening)recognition.stop()});window.addEventListener('online',()=>offline.classList.add('hidden'));window.addEventListener('offline',()=>offline.classList.remove('hidden'));if(navigator.onLine===false)offline.classList.remove('hidden');setLang(localStorage.getItem('lang')||'es');function setLang(l){lang=l;if(recognition)recognition.lang=lang==='es'?'es-ES':'en-US'}})();
+document.addEventListener('DOMContentLoaded', () => {
+  const box = document.getElementById('voiceBox'), panel = document.getElementById('voicePanel');
+  const expandBtn = document.getElementById('voiceExpand'), micBtn = document.getElementById('micBtn');
+  const status = document.getElementById('micStatus'), offlineTag = document.getElementById('micOffline');
+  const msgBox = document.getElementById('voiceMsgs');
+  let isExpanded = false, isRecording = false, recognition = null, lang = localStorage.getItem('lang') || 'en';
+
+  expandBtn.addEventListener('click', () => {
+    isExpanded = !isExpanded;
+    panel.classList.toggle('hidden', !isExpanded);
+    expandBtn.classList.toggle('open', isExpanded);
+    expandBtn.querySelector('span').textContent = isExpanded ? (lang === 'en' ? 'Voice Assistant' : 'Asistente de Voz') : (lang === 'en' ? 'Tap to open voice assistant' : 'Toca para abrir asistente de voz');
+  });
+
+  function initSpeech() {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) { status.textContent = "Not supported"; micBtn.disabled = true; return; }
+    recognition = new SR();
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = lang === 'en' ? 'en-US' : 'es-ES';
+
+    recognition.onstart = () => { isRecording = true; micBtn.classList.add('listening'); status.textContent = lang === 'en' ? 'Listening...' : 'Escuchando...'; };
+    recognition.onend = () => { isRecording = false; micBtn.classList.remove('listening'); status.textContent = lang === 'en' ? 'Ready' : 'Listo'; };
+    recognition.onresult = e => {
+      const text = e.results[0][0].transcript;
+      addMsg(text, 'user');
+      translateText(text);
+    };
+    recognition.onerror = () => { status.textContent = lang === 'en' ? 'Try again' : 'Intenta otra vez'; isRecording = false; micBtn.classList.remove('listening'); };
+  }
+
+  micBtn.addEventListener('click', () => {
+    if (!recognition) initSpeech();
+    if (isRecording) { recognition.stop(); return; }
+    window.speechSynthesis.cancel();
+    try { recognition.start(); } catch { status.textContent = "Error starting mic"; }
+  });
+
+  async function translateText(text) {
+    status.textContent = lang === 'en' ? 'Translating...' : 'Traduciendo...';
+    const target = lang === 'en' ? 'es' : 'en';
+    const pair = lang === 'en' ? 'en|es' : 'es|en';
+
+    try {
+      const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${pair}`);
+      const d = await res.json();
+      if (d.responseStatus === 200 && d.responseData.translatedText) {
+        addMsg(d.responseData.translatedText, 'bot');
+        speakText(d.responseData.translatedText, target === 'es' ? 'es-ES' : 'en-US');
+        return;
+      }
+    } catch {}
+
+    try {
+      const res = await fetch('https://libretranslate.com/translate', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ q: text, source: lang==='en'?'en':'es', target, format:'text' }) });
+      const d = await res.json();
+      if (d.translatedText) { addMsg(d.translatedText, 'bot'); speakText(d.translatedText, target==='es'?'es-ES':'en-US'); return; }
+    } catch {}
+
+    addMsg(text + (lang === 'en' ? ' [Translation offline]' : ' [Traducción offline]'), 'bot');
+  }
+
+  function addMsg(txt, type) {
+    const d = document.createElement('div');
+    d.className = `msg ${type}`;
+    d.textContent = txt;
+    msgBox.appendChild(d);
+    msgBox.scrollTop = msgBox.scrollHeight;
+  }
+
+  function speakText(txt, langCode) {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(txt);
+    u.lang = langCode;
+    window.speechSynthesis.speak(u);
+  }
+
+  if (!navigator.onLine) offlineTag.classList.remove('hidden');
+  window.addEventListener('online', () => offlineTag.classList.add('hidden'));
+  window.addEventListener('offline', () => offlineTag.classList.remove('hidden'));
+
+  window.addEventListener('storage', e => {
+    if (e.key === 'lang') lang = localStorage.getItem('lang') || 'en';
+    if (recognition) recognition.lang = lang === 'en' ? 'en-US' : 'es-ES';
+  });
+});
