@@ -1,120 +1,126 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Tomás Estrada - Professional Painting & Construction Services in North Carolina. Interior/Exterior Painting, Decking, Pressure Washing. Call (252) 876-7970" />
-  <title>Tomás Estrada | Painting & Construction Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#2C5F2D" />
+  <meta name="description" content="Tomás Estrada - Professional Painting & Construction Services. Call (252) 876-7970" />
+  <title>Tomás Estrada | Painting & Construction</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="css/style.css" />
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Tomás Estrada Painting Service","telephone":"+1-252-876-7970","email":"estradatomas2024@outlook.com","address":{"@type":"PostalAddress","addressRegion":"NC","addressCountry":"US"},"priceRange":"$$","description":"Professional interior and exterior painting, deck building, pressure washing, and construction services in North Carolina."}
-  </script>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-  <header class="site-header" role="banner">
-    <div class="header-container">
-      <div class="logo"><h1>Tomás Estrada</h1><p class="logo-subtitle">Painting Service</p></div>
-      <button id="langToggle" class="lang-toggle" aria-label="Toggle language" aria-pressed="false">
-        <span class="lang-flag lang-es active" title="Español">🇪🇸</span>
-        <span class="lang-flag lang-en" title="English">🇬🇧</span>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo"><h1>Tomás Estrada</h1><p class="logo-sub" data-i18n="logoSub">Painting & Construction</p></div>
+      <button id="langToggle" class="lang-btn" aria-label="Switch language">
+        <span class="flag active" title="English">🇺</span>
+        <span class="flag" title="Español">🇪</span>
       </button>
     </div>
   </header>
-  <main id="main-content" role="main">
-    <section class="hero" aria-label="Featured services">
-      <div class="hero-carousel" id="heroCarousel" aria-live="polite">
-        <div class="hero-slide active" style="background-image:url('images/hero/deck-1.webp')" data-fallback="images/hero/deck-1.jpg"><picture><source srcset="images/hero/deck-1.webp" type="image/webp"><img src="images/hero/deck-1.jpg" alt="Professional deck construction by Tomás Estrada" loading="eager" width="1920" height="1080"></picture></div>
-        <div class="hero-slide" style="background-image:url('images/hero/deck-2.webp')" data-fallback="images/hero/deck-2.jpg"><picture><source srcset="images/hero/deck-2.webp" type="image/webp"><img src="images/hero/deck-2.jpg" alt="Finished wooden deck with outdoor furniture" loading="lazy" width="1920" height="1080"></picture></div>
-        <div class="hero-slide" style="background-image:url('images/hero/painting-1.webp')" data-fallback="images/hero/painting-1.jpg"><picture><source srcset="images/hero/painting-1.webp" type="image/webp"><img src="images/hero/painting-1.jpg" alt="Interior painting service - fresh painted room" loading="lazy" width="1920" height="1080"></picture></div>
-        <div class="hero-slide" style="background-image:url('images/hero/painting-2.webp')" data-fallback="images/hero/painting-2.jpg"><picture><source srcset="images/hero/painting-2.webp" type="image/webp"><img src="images/hero/painting-2.jpg" alt="Exterior house painting professional service" loading="lazy" width="1920" height="1080"></picture></div>
-      </div>
-      <div class="hero-overlay"><div class="hero-content">
-        <h2 data-i18n="heroTitle">Professional Painting, Deck Building & Electrical Work</h2>
-        <p class="hero-subtitle" data-i18n="heroSubtitle">Tomás Estrada - Interior & Exterior Services</p>
-        <div class="hero-ctas">
-          <a href="tel:+12528767970" class="btn btn-primary btn-call" aria-label="Call Tomás now"><i class="fas fa-phone-alt" aria-hidden="true"></i><span data-i18n="callNow">Call Now</span></a>
-          <a href="sms:+12528767970?body=Hi%20Tom%C3%A1s%2C%20I%27m%20interested%20in%20your%20painting%20and%20deck%20services.%20Can%20you%20provide%20a%20quote%3F" class="btn btn-secondary btn-text" aria-label="Text Tomás"><i class="fas fa-comment-alt" aria-hidden="true"></i><span data-i18n="textMe">Text Me</span></a>
-        </div>
-      </div></div>
-      <div class="carousel-indicators" role="tablist" aria-label="Hero image carousel">
-        <button class="indicator active" data-slide="0" aria-label="Go to slide 1" role="tab" aria-selected="true"></button>
-        <button class="indicator" data-slide="1" aria-label="Go to slide 2" role="tab" aria-selected="false"></button>
-        <button class="indicator" data-slide="2" aria-label="Go to slide 3" role="tab" aria-selected="false"></button>
-        <button class="indicator" data-slide="3" aria-label="Go to slide 4" role="tab" aria-selected="false"></button>
-      </div>
-    </section>
-    <section class="services" id="services" aria-labelledby="servicesTitle">
-      <div class="container">
-        <h2 id="servicesTitle" class="section-title" data-i18n="servicesTitle">Our Services</h2>
-        <div class="services-grid">
-          <article class="service-card"><div class="service-icon" aria-hidden="true"><i class="fas fa-paint-roller"></i></div><h3 data-i18n="serviceInterior">Interior Painting</h3><p data-i18n="serviceInteriorDesc">Professional interior painting with premium paints and meticulous preparation.</p></article>
-          <article class="service-card"><div class="service-icon" aria-hidden="true"><i class="fas fa-house"></i></div><h3 data-i18n="serviceExterior">Exterior Painting</h3><p data-i18n="serviceExteriorDesc">Weather-resistant exterior painting to protect and beautify your home.</p></article>
-          <article class="service-card"><div class="service-icon" aria-hidden="true"><i class="fas fa-tint"></i></div><h3 data-i18n="servicePressure">Pressure Washing</h3><p data-i18n="servicePressureDesc">Deep cleaning for driveways, decks, siding, and outdoor surfaces.</p></article>
-          <article class="service-card"><div class="service-icon" aria-hidden="true"><i class="fas fa-roof"></i></div><h3 data-i18n="serviceRoof">Metal Roof Painting</h3><p data-i18n="serviceRoofDesc">Specialized coating for metal roofs to prevent rust and extend lifespan.</p></article>
-          <article class="service-card"><div class="service-icon" aria-hidden="true"><i class="fas fa-wrench"></i></div><h3 data-i18n="serviceDrywall">Drywall Work</h3><p data-i18n="serviceDrywallDesc">Expert drywall installation, repair, and finishing for seamless walls.</p></article>
-          <article class="service-card"><div class="service-icon" aria-hidden="true"><i class="fas fa-hammer"></i></div><h3 data-i18n="serviceDecking">Decking & Flooring</h3><p data-i18n="serviceDeckingDesc">Custom deck building, laminate flooring, and outdoor living spaces.</p></article>
+
+  <main>
+    <section class="hero">
+      <div class="hero-bg" id="heroBg"></div>
+      <div class="hero-content">
+        <h2 data-i18n="heroTitle">Professional Painting & Deck Services</h2>
+        <p class="hero-sub" data-i18n="heroSub">Quality work. Fair pricing. Trusted locally.</p>
+        <div class="cta-row">
+          <a href="tel:+12528767970" class="cta primary"><i class="fas fa-phone"></i> <span data-i18n="call">Call Now</span></a>
+          <a href="sms:+12528767970?body=Hi%20Tomás,%20I%27m%20interested%20in%20your%20painting%20and%20deck%20services.%20Can%20you%20provide%20a%20quote%3F" class="cta secondary"><i class="fas fa-comment"></i> <span data-i18n="text">Text Me</span></a>
         </div>
       </div>
+      <div class="indicators" id="indicators"></div>
     </section>
-    <section class="phrases" aria-labelledby="phrasesTitle">
-      <div class="container">
-        <h2 id="phrasesTitle" class="section-title" data-i18n="phrasesTitle">Common Phrases / Frases Comunes</h2>
-        <div class="phrases-grid" id="phrasesGrid"></div>
+
+    <section class="pad" id="services">
+      <h2 class="section-title" data-i18n="servicesTitle">Our Services</h2>
+      <div class="grid-3">
+        <article class="card"><i class="fas fa-paint-roller icon"></i><h3 data-i18n="s1t">Interior Painting</h3><p data-i18n="s1d">Clean, durable finishes with premium paint.</p></article>
+        <article class="card"><i class="fas fa-house-chimney icon"></i><h3 data-i18n="s2t">Exterior Painting</h3><p data-i18n="s2d">Weather-proof protection & curb appeal.</p></article>
+        <article class="card"><i class="fas fa-droplet icon"></i><h3 data-i18n="s3t">Pressure Washing</h3><p data-i18n="s3d">Deep clean driveways, decks & siding.</p></article>
+        <article class="card"><i class="fas fa-roof icon"></i><h3 data-i18n="s4t">Metal Roof Painting</h3><p data-i18n="s4d">Rust prevention & long-lasting coating.</p></article>
+        <article class="card"><i class="fas fa-wrench icon"></i><h3 data-i18n="s5t">Drywall & Repair</h3><p data-i18n="s5d">Seamless patches & professional finishing.</p></article>
+        <article class="card"><i class="fas fa-hammer icon"></i><h3 data-i18n="s6t">Decking & Flooring</h3><p data-i18n="s6d">Custom builds, staining & laminate floors.</p></article>
       </div>
     </section>
-    <section class="weather-section" aria-labelledby="weatherTitle">
-      <div class="container">
-        <h2 id="weatherTitle" class="section-title" data-i18n="weatherTitle">3-Day Forecast</h2>
-        <div class="weather-widget" id="weatherWidget" aria-live="polite">
-          <div class="weather-loading">Loading weather...</div>
-          <div class="weather-error hidden">Weather data unavailable</div>
-          <div class="weather-content hidden">
-            <div class="weather-current"><span class="weather-location" id="weatherLocation">North Carolina</span><span class="weather-temp" id="weatherTemp">--°F</span><span class="weather-condition" id="weatherCondition">--</span></div>
-            <div class="weather-forecast" id="weatherForecast"></div>
+
+    <section class="pad" id="voice-section">
+      <h2 class="section-title" data-i18n="voiceTitle">Voice Assistant</h2>
+      <div class="voice-container" id="voiceBox">
+        <div class="voice-header">
+          <button id="voiceExpand" class="expand-btn">
+            <i class="fas fa-microphone"></i> <span data-i18n="voiceToggle">Tap to open voice assistant</span>
+            <i class="fas fa-chevron-down arrow"></i>
+          </button>
+        </div>
+        <div class="voice-panel hidden" id="voicePanel">
+          <div class="messages" id="voiceMsgs">
+            <div class="msg bot" data-i18n="voiceIntro">Tap the mic to speak. I'll listen and translate your message.</div>
+          </div>
+          <div class="voice-controls">
+            <button id="micBtn" class="mic-btn" aria-label="Tap to start recording">
+              <i class="fas fa-microphone"></i>
+            </button>
+            <span id="micStatus" class="status-text" data-i18n="micReady">Ready</span>
+            <span id="micOffline" class="offline-tag hidden" data-i18n="micOffline">Offline mode active</span>
           </div>
         </div>
       </div>
     </section>
-    <section class="gallery" id="gallery" aria-labelledby="galleryTitle">
-      <div class="container">
-        <h2 id="galleryTitle" class="section-title" data-i18n="galleryTitle">Our Work</h2>
-        <div class="gallery-grid">
-          <figure class="gallery-item"><picture><source srcset="images/gallery/project-1.webp" type="image/webp"><img src="images/gallery/project-1.jpg" alt="Finished interior paint job" loading="lazy" width="800" height="600"></picture><figcaption>Interior painting project</figcaption></figure>
-          <figure class="gallery-item"><picture><source srcset="images/gallery/project-2.webp" type="image/webp"><img src="images/gallery/project-2.jpg" alt="Completed exterior house painting" loading="lazy" width="800" height="600"></picture><figcaption>Exterior painting project</figcaption></figure>
-          <figure class="gallery-item"><picture><source srcset="images/gallery/project-3.webp" type="image/webp"><img src="images/gallery/project-3.jpg" alt="Deck construction in progress" loading="lazy" width="800" height="600"></picture><figcaption>Deck building project</figcaption></figure>
-          <figure class="gallery-item"><picture><source srcset="images/gallery/project-4.webp" type="image/webp"><img src="images/gallery/project-4.jpg" alt="Pressure washing service" loading="lazy" width="800" height="600"></picture><figcaption>Pressure washing service</figcaption></figure>
-          <figure class="gallery-item"><picture><source srcset="images/gallery/project-5.webp" type="image/webp"><img src="images/gallery/project-5.jpg" alt="Home renovation deck project" loading="lazy" width="800" height="600"></picture><figcaption>Home renovation project</figcaption></figure>
-          <figure class="gallery-item"><picture><source srcset="images/gallery/project-6.webp" type="image/webp"><img src="images/gallery/project-6.jpg" alt="Beautiful finished wooden deck" loading="lazy" width="800" height="600"></picture><figcaption>Finished deck project</figcaption></figure>
+
+    <section class="pad" id="phrases">
+      <h2 class="section-title" data-i18n="phraseTitle">Quick Phrases</h2>
+      <div class="grid-2" id="phraseGrid"></div>
+    </section>
+
+    <section class="pad" id="weather">
+      <h2 class="section-title" data-i18n="weatherTitle">Local Weather</h2>
+      <div class="weather-box" id="weatherBox">
+        <div class="w-loading" data-i18n="wLoad">Loading...</div>
+        <div class="w-error hidden" data-i18n="wErr">Weather unavailable</div>
+        <div class="w-data hidden" id="wData">
+          <div class="w-main">
+            <span class="w-loc" id="wLoc">Loading...</span>
+            <div class="w-temp-row">
+              <span class="w-temp" id="wTemp">--°F</span>
+              <span class="w-cond" id="wCond">--</span>
+            </div>
+            <span class="w-feel" id="wFeel">Feels like --°F</span>
+          </div>
+          <div class="w-forecast" id="wForecast"></div>
         </div>
       </div>
     </section>
-  </main>
-  <div id="voiceWidget" class="voice-widget" role="dialog" aria-labelledby="voiceWidgetTitle" hidden>
-    <div class="voice-header"><h3 id="voiceWidgetTitle">Voice Assistant</h3><button class="voice-close" aria-label="Close voice assistant"><i class="fas fa-times"></i></button></div>
-    <div class="voice-messages" id="voiceMessages" aria-live="polite"><div class="voice-message bot">Hello! Hold the microphone to speak. I can help translate your messages.</div></div>
-    <div class="voice-input"><button id="voiceBtn" class="voice-btn" aria-label="Hold to speak"><i class="fas fa-microphone"></i></button><span class="voice-status" id="voiceStatus">Ready</span></div>
-    <div class="voice-offline-indicator hidden" id="voiceOffline"><i class="fas fa-wifi-slash" aria-hidden="true"></i><span>Offline mode - voice recognition works, translation requires internet</span></div>
-  </div>
-  <button id="voiceToggle" class="voice-toggle-btn" aria-label="Open voice assistant" aria-expanded="false"><i class="fas fa-microphone"></i><span class="pulse-ring"></span></button>
-  <footer class="site-footer" role="contentinfo">
-    <div class="container footer-content">
-      <div class="footer-brand"><h3>Tomás Estrada</h3><p>Painting Service - Interior and Exterior</p></div>
-      <div class="footer-contact">
-        <a href="tel:+12528767970" class="footer-link" aria-label="Call (252) 876-7970"><i class="fas fa-phone" aria-hidden="true"></i><span>(252) 876-7970</span></a>
-        <a href="mailto:estradatomas2024@outlook.com" class="footer-link" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i><span>estradatomas2024@outlook.com</span></a>
+
+    <section class="pad" id="gallery">
+      <h2 class="section-title" data-i18n="galleryTitle">Recent Projects</h2>
+      <div class="grid-3 gallery">
+        <figure class="g-item"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop" alt="Interior painting"><figcaption data-i18n="g1">Interior</figcaption></figure>
+        <figure class="g-item"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop" alt="Exterior painting"><figcaption data-i18n="g2">Exterior</figcaption></figure>
+        <figure class="g-item"><img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?w=800&h=600&fit=crop" alt="Deck construction"><figcaption data-i18n="g3">Decking</figcaption></figure>
+        <figure class="g-item"><img src="https://images.unsplash.com/photo-1621929747188-0b4dc2849edc?w=800&h=600&fit=crop" alt="Pressure washing"><figcaption data-i18n="g4">Washing</figcaption></figure>
+        <figure class="g-item"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=600&fit=crop" alt="Renovation"><figcaption data-i18n="g5">Renovation</figcaption></figure>
+        <figure class="g-item"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop" alt="Finished deck"><figcaption data-i18n="g6">Finished Deck</figcaption></figure>
       </div>
-      <div class="footer-social">
-        <a href="#" aria-label="Facebook" class="social-link"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" aria-label="Instagram" class="social-link"><i class="fab fa-instagram"></i></a>
+    </section>
+  </main>
+
+  <footer class="pad">
+    <div class="foot-grid">
+      <div class="f-info"><h3>Tomás Estrada</h3><p>Painting Service - Interior & Exterior</p></div>
+      <div class="f-contact">
+        <a href="tel:+12528767970" class="f-link"><i class="fas fa-phone"></i> (252) 876-7970</a>
+        <a href="mailto:estradatomas2024@outlook.com" class="f-link"><i class="fas fa-envelope"></i> Email Us</a>
       </div>
     </div>
-    <div class="footer-bottom"><p>&copy; <span id="currentYear"></span> Tomás Estrada. All rights reserved.</p></div>
+    <div class="copy">&copy; <span id="yr"></span> Tomás Estrada. All rights reserved.</div>
   </footer>
+
   <script src="js/app.js" defer></script>
   <script src="js/voice.js" defer></script>
   <script src="js/weather.js" defer></script>
