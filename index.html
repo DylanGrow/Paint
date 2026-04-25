@@ -1,111 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#2C5F2D" />
-  <meta name="description" content="Tomás Estrada - Professional Painting & Construction Services. Call (252) 876-7970" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="theme-color" content="#2C5F2D">
+  <meta name="description" content="Tomás Estrada - Professional Painting & Construction Services in North Carolina. Call or text for a free quote.">
   <title>Tomás Estrada | Painting & Construction</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Tomás Estrada Painting","telephone":"+12528767970","email":"estradatomas2024@outlook.com","areaServed":"North Carolina","priceRange":"$$","description":"Professional interior/exterior painting, decking, pressure washing, drywall & flooring."}
+  </script>
 </head>
 <body>
   <header class="site-header">
     <div class="header-inner">
       <div class="logo"><h1>Tomás Estrada</h1><p class="logo-sub" data-i18n="logoSub">Painting & Construction</p></div>
-      <button id="langToggle" class="lang-btn" aria-label="Switch language">
-        <span class="flag active" title="English">🇺</span>
-        <span class="flag" title="Español">🇪</span>
+      <button id="langToggle" class="lang-btn" aria-label="Switch language" aria-expanded="false">
+        <span class="flag us active" title="English"><svg width="22" height="14" viewBox="0 0 600 400" aria-hidden="true"><rect width="600" height="400" fill="#b22234"/><path d="M0 23h600M0 69h600M0 115h600M0 161h600M0 207h600M0 253h600M0 299h600M0 345h600M0 391h600" stroke="#fff" stroke-width="23"/><rect width="250" height="200" fill="#3c3b6e"/></svg></span>
+        <span class="flag es" title="Español"><svg width="22" height="14" viewBox="0 0 800 533" aria-hidden="true"><rect width="800" height="533" fill="#c60b1e"/><path d="M0 133h800v267H0z" fill="#ffc400"/></svg></span>
       </button>
     </div>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero" aria-label="Featured work">
       <div class="hero-bg" id="heroBg"></div>
       <div class="hero-content">
         <h2 data-i18n="heroTitle">Professional Painting & Deck Services</h2>
         <p class="hero-sub" data-i18n="heroSub">Quality work. Fair pricing. Trusted locally.</p>
         <div class="cta-row">
-          <a href="tel:+12528767970" class="cta primary"><i class="fas fa-phone"></i> <span data-i18n="call">Call Now</span></a>
-          <a href="sms:+12528767970?body=Hi%20Tomás,%20I%27m%20interested%20in%20your%20painting%20and%20deck%20services.%20Can%20you%20provide%20a%20quote%3F" class="cta secondary"><i class="fas fa-comment"></i> <span data-i18n="text">Text Me</span></a>
+          <a href="tel:+12528767970" class="cta primary"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg> <span data-i18n="call">Call Now</span></a>
+          <a href="sms:+12528767970?body=Hi%20Tomás,%20I%27m%20interested%20in%20your%20painting%20and%20deck%20services.%20Can%20you%20provide%20a%20quote%3F" class="cta secondary"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg> <span data-i18n="text">Text Me</span></a>
         </div>
       </div>
-      <div class="indicators" id="indicators"></div>
+      <div class="indicators" id="indicators" aria-label="Carousel navigation"></div>
     </section>
 
-    <section class="pad" id="services">
-      <h2 class="section-title" data-i18n="servicesTitle">Our Services</h2>
+    <section class="pad" id="services" aria-labelledby="servicesTitle">
+      <h2 id="servicesTitle" class="section-title" data-i18n="servicesTitle">Our Services</h2>
       <div class="grid-3">
-        <article class="card"><i class="fas fa-paint-roller icon"></i><h3 data-i18n="s1t">Interior Painting</h3><p data-i18n="s1d">Clean, durable finishes with premium paint.</p></article>
-        <article class="card"><i class="fas fa-house-chimney icon"></i><h3 data-i18n="s2t">Exterior Painting</h3><p data-i18n="s2d">Weather-proof protection & curb appeal.</p></article>
-        <article class="card"><i class="fas fa-droplet icon"></i><h3 data-i18n="s3t">Pressure Washing</h3><p data-i18n="s3d">Deep clean driveways, decks & siding.</p></article>
-        <article class="card"><i class="fas fa-roof icon"></i><h3 data-i18n="s4t">Metal Roof Painting</h3><p data-i18n="s4d">Rust prevention & long-lasting coating.</p></article>
-        <article class="card"><i class="fas fa-wrench icon"></i><h3 data-i18n="s5t">Drywall & Repair</h3><p data-i18n="s5d">Seamless patches & professional finishing.</p></article>
-        <article class="card"><i class="fas fa-hammer icon"></i><h3 data-i18n="s6t">Decking & Flooring</h3><p data-i18n="s6d">Custom builds, staining & laminate floors.</p></article>
+        <article class="card"><svg class="svc-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M3 16h18M6 16l3-9h6l3 9M10 16v4M14 16v4M7 7l-2 3"/></svg><h3 data-i18n="s1t">Interior Painting</h3><p data-i18n="s1d">Clean, durable finishes with premium paint.</p></article>
+        <article class="card"><svg class="svc-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg><h3 data-i18n="s2t">Exterior Painting</h3><p data-i18n="s2d">Weather-proof protection & curb appeal.</p></article>
+        <article class="card"><svg class="svc-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M12 2v12M12 14a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM7 10l5-8 5 8"/></svg><h3 data-i18n="s3t">Pressure Washing</h3><p data-i18n="s3d">Deep clean driveways, decks & siding.</p></article>
+        <article class="card"><svg class="svc-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M3 21h18L12 3zM12 12v9"/></svg><h3 data-i18n="s4t">Metal Roof Painting</h3><p data-i18n="s4d">Rust prevention & long-lasting coating.</p></article>
+        <article class="card"><svg class="svc-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><h3 data-i18n="s5t">Drywall & Repair</h3><p data-i18n="s5d">Seamless patches & professional finishing.</p></article>
+        <article class="card"><svg class="svc-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg><h3 data-i18n="s6t">Decking & Flooring</h3><p data-i18n="s6d">Custom builds, staining & laminate floors.</p></article>
       </div>
     </section>
 
-    <section class="pad" id="voice-section">
-      <h2 class="section-title" data-i18n="voiceTitle">Voice Assistant</h2>
+    <section class="pad" id="voice-section" aria-labelledby="voiceTitle">
+      <h2 id="voiceTitle" class="section-title" data-i18n="voiceTitle">Voice Assistant</h2>
       <div class="voice-container" id="voiceBox">
-        <div class="voice-header">
-          <button id="voiceExpand" class="expand-btn">
-            <i class="fas fa-microphone"></i> <span data-i18n="voiceToggle">Tap to open voice assistant</span>
-            <i class="fas fa-chevron-down arrow"></i>
-          </button>
-        </div>
+        <button id="voiceExpand" class="expand-btn" type="button">
+          <svg class="icon-mic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1a4 4 0 0 1 4 4v6a4 4 0 0 1-8 0V5a4 4 0 0 1 4-4z"/><path fill="currentColor" d="M20 7v3a8 8 0 0 1-16 0V7h3v3a5 5 0 0 0 10 0V7h3z"/></svg>
+          <span data-i18n="voiceToggle">Tap to open voice assistant</span>
+          <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M6 9l6 6 6-6"/></svg>
+        </button>
         <div class="voice-panel hidden" id="voicePanel">
-          <div class="messages" id="voiceMsgs">
-            <div class="msg bot" data-i18n="voiceIntro">Tap the mic to speak. I'll listen and translate your message.</div>
+          <div class="messages" id="voiceMsgs" aria-live="polite">
+            <div class="msg bot" data-i18n="voiceIntro">Tap the mic to speak. I'll detect your language and translate it to the opposite.</div>
           </div>
           <div class="voice-controls">
-            <button id="micBtn" class="mic-btn" aria-label="Tap to start recording">
-              <i class="fas fa-microphone"></i>
+            <button id="micBtn" class="mic-btn" type="button" aria-label="Tap to toggle microphone">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1a4 4 0 0 1 4 4v6a4 4 0 0 1-8 0V5a4 4 0 0 1 4-4z"/><path fill="currentColor" d="M20 7v3a8 8 0 0 1-16 0V7h3v3a5 5 0 0 0 10 0V7h3z"/></svg>
             </button>
             <span id="micStatus" class="status-text" data-i18n="micReady">Ready</span>
-            <span id="micOffline" class="offline-tag hidden" data-i18n="micOffline">Offline mode active</span>
+            <span id="micOffline" class="offline-tag hidden" data-i18n="micOffline">Offline mode</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="pad" id="phrases">
-      <h2 class="section-title" data-i18n="phraseTitle">Quick Phrases</h2>
-      <div class="grid-2" id="phraseGrid"></div>
+    <section class="pad" id="phrases" aria-labelledby="phraseTitle">
+      <h2 id="phraseTitle" class="section-title" data-i18n="phraseTitle">Quick Phrases</h2>
+      <div class="grid-2" id="phraseGrid" aria-live="polite"></div>
     </section>
 
-    <section class="pad" id="weather">
-      <h2 class="section-title" data-i18n="weatherTitle">Local Weather</h2>
+    <section class="pad" id="weather" aria-labelledby="weatherTitle">
+      <h2 id="weatherTitle" class="section-title" data-i18n="weatherTitle">Local Weather</h2>
       <div class="weather-box" id="weatherBox">
         <div class="w-loading" data-i18n="wLoad">Loading...</div>
         <div class="w-error hidden" data-i18n="wErr">Weather unavailable</div>
         <div class="w-data hidden" id="wData">
-          <div class="w-main">
-            <span class="w-loc" id="wLoc">Loading...</span>
-            <div class="w-temp-row">
-              <span class="w-temp" id="wTemp">--°F</span>
-              <span class="w-cond" id="wCond">--</span>
-            </div>
-            <span class="w-feel" id="wFeel">Feels like --°F</span>
-          </div>
+          <span class="w-loc" id="wLoc">Loading...</span>
+          <div class="w-temp-row"><span class="w-temp" id="wTemp">--°F</span><span class="w-cond" id="wCond">--</span></div>
+          <span class="w-feel" id="wFeel">Feels like --°F</span>
           <div class="w-forecast" id="wForecast"></div>
         </div>
       </div>
     </section>
 
-    <section class="pad" id="gallery">
-      <h2 class="section-title" data-i18n="galleryTitle">Recent Projects</h2>
+    <section class="pad" id="gallery" aria-labelledby="galleryTitle">
+      <h2 id="galleryTitle" class="section-title" data-i18n="galleryTitle">Recent Projects</h2>
       <div class="grid-3 gallery">
-        <figure class="g-item"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop" alt="Interior painting"><figcaption data-i18n="g1">Interior</figcaption></figure>
-        <figure class="g-item"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop" alt="Exterior painting"><figcaption data-i18n="g2">Exterior</figcaption></figure>
-        <figure class="g-item"><img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?w=800&h=600&fit=crop" alt="Deck construction"><figcaption data-i18n="g3">Decking</figcaption></figure>
-        <figure class="g-item"><img src="https://images.unsplash.com/photo-1621929747188-0b4dc2849edc?w=800&h=600&fit=crop" alt="Pressure washing"><figcaption data-i18n="g4">Washing</figcaption></figure>
-        <figure class="g-item"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=600&fit=crop" alt="Renovation"><figcaption data-i18n="g5">Renovation</figcaption></figure>
-        <figure class="g-item"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop" alt="Finished deck"><figcaption data-i18n="g6">Finished Deck</figcaption></figure>
+        <figure class="g-item"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop&q=80" alt="Interior painting" width="800" height="600" decoding="async" loading="lazy"><figcaption data-i18n="g1">Interior</figcaption></figure>
+        <figure class="g-item"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&q=80" alt="Exterior painting" width="800" height="600" decoding="async" loading="lazy"><figcaption data-i18n="g2">Exterior</figcaption></figure>
+        <figure class="g-item"><img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?w=800&h=600&fit=crop&q=80" alt="Deck construction" width="800" height="600" decoding="async" loading="lazy"><figcaption data-i18n="g3">Decking</figcaption></figure>
+        <figure class="g-item"><img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&h=600&fit=crop&q=80" alt="Pressure washing" width="800" height="600" decoding="async" loading="lazy"><figcaption data-i18n="g4">Washing</figcaption></figure>
+        <figure class="g-item"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=600&fit=crop&q=80" alt="Renovation" width="800" height="600" decoding="async" loading="lazy"><figcaption data-i18n="g5">Renovation</figcaption></figure>
+        <figure class="g-item"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop&q=80" alt="Finished deck" width="800" height="600" decoding="async" loading="lazy"><figcaption data-i18n="g6">Finished Deck</figcaption></figure>
       </div>
     </section>
   </main>
@@ -114,8 +113,8 @@
     <div class="foot-grid">
       <div class="f-info"><h3>Tomás Estrada</h3><p>Painting Service - Interior & Exterior</p></div>
       <div class="f-contact">
-        <a href="tel:+12528767970" class="f-link"><i class="fas fa-phone"></i> (252) 876-7970</a>
-        <a href="mailto:estradatomas2024@outlook.com" class="f-link"><i class="fas fa-envelope"></i> Email Us</a>
+        <a href="tel:+12528767970" class="f-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.2 2.2z"/></svg> (252) 876-7970</a>
+        <a href="mailto:estradatomas2024@outlook.com" class="f-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> Email Us</a>
       </div>
     </div>
     <div class="copy">&copy; <span id="yr"></span> Tomás Estrada. All rights reserved.</div>
