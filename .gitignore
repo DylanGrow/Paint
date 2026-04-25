@@ -1,0 +1,20 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Images - add your optimized files here
+images/hero/*
+!images/hero/.gitkeep
+images/gallery/*
+!images/gallery/.gitkeep
+
+# Logs
+*.log
+
+# Environment
+.env
