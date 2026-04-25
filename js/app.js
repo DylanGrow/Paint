@@ -1,2 +1,118 @@
-// app.js - Language toggle, carousel, phrases
-document.addEventListener('DOMContentLoaded',()=>{const t={en:{skipToContent:"Skip to main content",logoSubtitle:"Painting Service",heroTitle:"Professional Painting, Deck Building & Electrical Work",heroSubtitle:"Tomás Estrada - Interior & Exterior Services",callNow:"Call Now",textMe:"Text Me",servicesTitle:"Our Services",serviceInterior:"Interior Painting",serviceInteriorDesc:"Professional interior painting with premium paints and meticulous preparation.",serviceExterior:"Exterior Painting",serviceExteriorDesc:"Weather-resistant exterior painting to protect and beautify your home.",servicePressure:"Pressure Washing",servicePressureDesc:"Deep cleaning for driveways, decks, siding, and outdoor surfaces.",serviceRoof:"Metal Roof Painting",serviceRoofDesc:"Specialized coating for metal roofs to prevent rust and extend lifespan.",serviceDrywall:"Drywall Work",serviceDrywallDesc:"Expert drywall installation, repair, and finishing for seamless walls.",serviceDecking:"Decking & Flooring",serviceDeckingDesc:"Custom deck building, laminate flooring, and outdoor living spaces.",phrasesTitle:"Common Phrases / Frases Comunes",weatherTitle:"3-Day Forecast",weatherLoading:"Loading weather...",weatherError:"Weather data unavailable",galleryTitle:"Our Work",voiceTitle:"Voice Assistant",voiceWelcome:"Hello! Hold the microphone to speak. I can help translate your messages.",voiceReady:"Ready",voiceOffline:"Offline mode - voice recognition works, translation requires internet",footerBusinessType:"Painting Service - Interior and Exterior",footerRights:"All rights reserved."},es:{skipToContent:"Saltar al contenido principal",logoSubtitle:"Servicio de Pintura",heroTitle:"Pintura Profesional, Construcción de Deck y Trabajo Eléctrico",heroSubtitle:"Tomás Estrada - Servicios Interior y Exterior",callNow:"Llamar Ahora",textMe:"Enviar Texto",servicesTitle:"Nuestros Servicios",serviceInterior:"Pintura Interior",serviceInteriorDesc:"Pintura interior profesional con pinturas premium y preparación meticulosa.",serviceExterior:"Pintura Exterior",serviceExteriorDesc:"Pintura exterior resistente al clima para proteger y embellecer tu hogar.",servicePressure:"Lavado a Presión",servicePressureDesc:"Limpieza profunda para driveways, decks, siding y superficies exteriores.",serviceRoof:"Pintura de Techos Metálicos",serviceRoofDesc:"Recubrimiento especializado para techos metálicos para prevenir óxido y extender vida útil.",serviceDrywall:"Trabajo en Drywall",serviceDrywallDesc:"Instalación experta de drywall, reparación y acabado para paredes perfectas.",serviceDecking:"Decking y Pisos",serviceDeckingDesc:"Construcción personalizada de decks, pisos laminados y espacios exteriores.",phrasesTitle:"Frases Comunes / Common Phrases",weatherTitle:"Pronóstico de 3 Días",weatherLoading:"Cargando clima...",weatherError:"Datos del clima no disponibles",galleryTitle:"Nuestro Trabajo",voiceTitle:"Asistente de Voz",voiceWelcome:"¡Hola! Mantén presionado el micrófono para hablar. Puedo ayudarte a traducir tus mensajes.",voiceReady:"Listo",voiceOffline:"Modo offline - reconocimiento de voz funciona, traducción requiere internet",footerBusinessType:"Servicio de Pintura - Interior y Exterior",footerRights:"Todos los derechos reservados."}},phrases=[{en:"What day is it today?",es:"¿Qué día es hoy?"},{en:"How much?",es:"¿Cuánto cuesta?"},{en:"How are you today?",es:"¿Cómo estás hoy?"},{en:"Thank you, great job!",es:"¡Gracias, excelente trabajo!"},{en:"See you tomorrow",es:"Nos vemos mañana"},{en:"Can I get you anything?",es:"¿Puedo traerte algo?"},{en:"What time can you start?",es:"¿A qué hora puedes empezar?"},{en:"Do you need materials?",es:"¿Necesitas materiales?"},{en:"Perfect, let's begin",es:"Perfecto, comencemos"},{en:"How long will this take?",es:"¿Cuánto tiempo tardará?"}];let lang=localStorage.getItem('lang')||'es';const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);function setLang(l){lang=l;document.documentElement.lang=l;localStorage.setItem('lang',l);$$('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(t[l][k])el.textContent=t[l][k]});$$('[data-i18n-aria]').forEach(el=>{const k=el.dataset.i18nAria;if(t[l][k])el.setAttribute('aria-label',t[l][k])});renderPhrases();updateLangToggle()}function updateLangToggle(){const toggle=$('#langToggle');toggle.querySelector('.lang-es').classList.toggle('active',lang==='es');toggle.querySelector('.lang-en').classList.toggle('active',lang==='en');toggle.setAttribute('aria-pressed',lang==='en')}function renderPhrases(){const grid=$('#phrasesGrid');if(!grid)return;grid.innerHTML=phrases.map(p=>`<button class="phrase-btn" data-en="${p.en}" data-es="${p.es}" aria-label="${p.en} / ${p.es}"><span class="phrase-en">${lang==='en'?p.en:p.es}</span><span class="phrase-es">${lang==='es'?p.en:p.es}</span></button>`).join('');grid.addEventListener('click',e=>{const btn=e.target.closest('.phrase-btn');if(btn){const txt=lang==='en'?btn.dataset.en:btn.dataset.es;if('speechSynthesis'in window){const u=new SpeechSynthesisUtterance(txt);u.lang=lang==='en'?'en-US':'es-ES';speechSynthesis.speak(u)}}})}$('#langToggle').addEventListener('click',()=>setLang(lang==='es'?'en':'es'));const carousel=$('#heroCarousel'),slides=$$('.hero-slide'),indicators=$$('.indicator');let currentSlide=0,slideInterval;function goToSlide(n){slides[currentSlide].classList.remove('active');indicators[currentSlide].classList.remove('active');currentSlide=(n+slides.length)%slides.length;slides[currentSlide].classList.add('active');indicators[currentSlide].classList.add('active')}function startCarousel(){slideInterval=setInterval(()=>goToSlide(currentSlide+1),5000)}indicators.forEach((ind,i)=>ind.addEventListener('click',()=>{goToSlide(i);clearInterval(slideInterval);startCarousel()}));if(carousel){slides.forEach(s=>{const img=s.querySelector('img');if(img&&'loading'in HTMLImageElement.prototype)img.loading='lazy'});startCarousel()}setLang(lang);document.getElementById('currentYear').textContent=new Date().getFullYear();if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js').catch(()=>{})});
+document.addEventListener('DOMContentLoaded', () => {
+  const i18n = {
+    en: {
+      logoSub: "Painting & Construction", heroTitle: "Professional Painting & Deck Services", heroSub: "Quality work. Fair pricing. Trusted locally.",
+      call: "Call Now", text: "Text Me", servicesTitle: "Our Services",
+      s1t: "Interior Painting", s1d: "Clean, durable finishes with premium paint.",
+      s2t: "Exterior Painting", s2d: "Weather-proof protection & curb appeal.",
+      s3t: "Pressure Washing", s3d: "Deep clean driveways, decks & siding.",
+      s4t: "Metal Roof Painting", s4d: "Rust prevention & long-lasting coating.",
+      s5t: "Drywall & Repair", s5d: "Seamless patches & professional finishing.",
+      s6t: "Decking & Flooring", s6d: "Custom builds, staining & laminate floors.",
+      voiceTitle: "Voice Assistant", voiceToggle: "Tap to open voice assistant",
+      voiceIntro: "Tap the mic to speak. I'll listen and translate your message.",
+      micReady: "Ready", micOffline: "Offline mode active", phraseTitle: "Quick Phrases",
+      weatherTitle: "Local Weather", wLoad: "Loading...", wErr: "Weather unavailable",
+      galleryTitle: "Recent Projects", g1: "Interior", g2: "Exterior", g3: "Decking", g4: "Washing", g5: "Renovation", g6: "Finished Deck"
+    },
+    es: {
+      logoSub: "Pintura y Construcción", heroTitle: "Pintura Profesional y Servicios de Deck", heroSub: "Trabajo de calidad. Precio justo. Confianza local.",
+      call: "Llamar Ahora", text: "Enviar Texto", servicesTitle: "Nuestros Servicios",
+      s1t: "Pintura Interior", s1d: "Acabados duraderos con pintura premium.",
+      s2t: "Pintura Exterior", s2d: "Protección contra el clima y buena imagen.",
+      s3t: "Lavado a Presión", s3d: "Limpieza profunda de entradas, decks y paredes.",
+      s4t: "Pintura de Techos", s4d: "Prevención de óxido y recubrimiento duradero.",
+      s5t: "Drywall y Reparación", s5d: "Parches perfectos y acabado profesional.",
+      s6t: "Decking y Pisos", s6d: "Construcciones a medida, teñido y pisos laminados.",
+      voiceTitle: "Asistente de Voz", voiceToggle: "Toca para abrir asistente de voz",
+      voiceIntro: "Toca el micrófono para hablar. Escucharé y traduciré tu mensaje.",
+      micReady: "Listo", micOffline: "Modo offline activo", phraseTitle: "Frases Rápidas",
+      weatherTitle: "Clima Local", wLoad: "Cargando...", wErr: "Clima no disponible",
+      galleryTitle: "Proyectos Recientes", g1: "Interior", g2: "Exterior", g3: "Decking", g4: "Lavado", g5: "Renovación", g6: "Deck Terminado"
+    }
+  };
+  
+  const phrases = [
+    {en: "What day is today?", es: "¿Qué día es hoy?"},
+    {en: "How much does it cost?", es: "¿Cuánto cuesta?"},
+    {en: "How are you today?", es: "¿Cómo estás hoy?"},
+    {en: "Thank you, great job!", es: "¡Gracias, excelente trabajo!"},
+    {en: "See you tomorrow", es: "Nos vemos mañana"},
+    {en: "What time can you start?", es: "¿A qué hora puedes empezar?"},
+    {en: "Do you need materials?", es: "¿Necesitas materiales?"},
+    {en: "Perfect, let's begin", es: "Perfecto, comencemos"},
+    {en: "How long will it take?", es: "¿Cuánto tiempo tomará?"},
+    {en: "Can I get you anything?", es: "¿Puedo traerte algo?"}
+  ];
+
+  const heroImages = [
+    'https://images.unsplash.com/photo-1558904541-efa843a96f01?w=1920&h=1080&fit=crop',
+    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=1080&fit=crop',
+    'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop',
+    'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1920&h=1080&fit=crop'
+  ];
+
+  let lang = localStorage.getItem('lang') || 'en';
+  const $ = s => document.querySelector(s), $$ = s => document.querySelectorAll(s);
+
+  function setLang(l) {
+    lang = l; localStorage.setItem('lang', l);
+    document.documentElement.lang = l === 'en' ? 'en' : 'es';
+    $$('[data-i18n]').forEach(el => {
+      const k = el.dataset.i18n;
+      if (i18n[l][k]) el.textContent = i18n[l][k];
+    });
+    $('#langToggle').querySelector('.flag.active')?.classList.remove('active');
+    $(`#langToggle .flag[title="${l === 'en' ? 'English' : 'Español'}"]`).classList.add('active');
+    renderPhrases();
+  }
+
+  function renderPhrases() {
+    $('#phraseGrid').innerHTML = phrases.map(p => `
+      <button class="phrase-btn" data-en="${p.en}" data-es="${p.es}">
+        <span class="p-en">${lang === 'en' ? p.en : p.es}</span>
+        <span class="p-es">${lang === 'es' ? p.en : p.es}</span>
+      </button>
+    `).join('');
+    $$('.phrase-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const txt = lang === 'en' ? btn.dataset.en : btn.dataset.es;
+        const u = new SpeechSynthesisUtterance(txt);
+        u.lang = lang === 'en' ? 'en-US' : 'es-ES';
+        speechSynthesis.speak(u);
+      });
+    });
+  }
+
+  $('#langToggle').addEventListener('click', () => setLang(lang === 'en' ? 'es' : 'en'));
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Hero Carousel
+  const bg = $('#heroBg');
+  const dots = $('#indicators');
+  let curr = 0, iv;
+
+  function updateSlide() {
+    bg.style.backgroundImage = `url('${heroImages[curr]}')`;
+    dots.innerHTML = heroImages.map((_,i) => `<span class="dot ${i===curr?'active':''}"></span>`).join('');
+  }
+  
+  heroImages.forEach((_,i) => { 
+    const d = document.createElement('span'); 
+    d.className = 'dot'; 
+    d.addEventListener('click', ()=>{
+      curr=i; 
+      clearInterval(iv); 
+      iv=setInterval(next,5000); 
+      updateSlide()
+    }); 
+    dots.appendChild(d); 
+  });
+  
+  const next = () => { curr = (curr+1)%heroImages.length; updateSlide(); };
+  updateSlide(); 
+  iv = setInterval(next, 5000);
+
+  setLang(lang);
+  window.speechSynthesis?.getVoices();
+});
